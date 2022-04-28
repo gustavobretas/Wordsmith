@@ -1,0 +1,157 @@
+@extends('dashboard.layout')
+
+@section('content')
+    <div class="w-full ml-64 bg-gray-100">
+
+        <!-- Main Content -->
+        <div class="relative w-full px-8">
+
+            <div class="flex flex-col justify-between h-screen py-5">
+                <div class="flex flex-col h-full">
+                    <div class="flex justify-between flex-grow-0 pr-1">
+                        <h1 class="font-bold text-gray-800">Dashboard</h1>
+                        <form method="POST" action="{{ route('logout') }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <button type="submit"
+                                class="flex items-center h-full px-2 text-xs font-medium text-red-500 bg-red-100 rounded-full focus:outline-none">
+                                Logout
+                                <svg class="w-4 h-4 ml-1 stroke-current" xmlns="http://www.w3.org/2000/svg" width="44"
+                                    height="44" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M7 6a7.75 7.75 0 1 0 10 0" />
+                                    <line x1="12" y1="4" x2="12" y2="12" />
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Begin Dashboard cards -->
+                    <div class="flex flex-col h-full justify-between space-y-5 lg:space-y-7  pb-10 items-center">
+                        <!-- Top Row of Cards -->
+                        <div class="flex-wrap w-full gap-x-5 lg:gap-x-6 grid grid-cols-4 flex-1">
+
+                            <div class="col-span-1">
+                                <div
+                                    class="flex items-center justify-center h-full px-6 py-4 mt-6 bg-white rounded-lg shadow-sm">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex flex-col items-center text-gray-900">
+                                            <h2 class="text-3xl font-bold text-center mb-1.5" id="time"></h2>
+                                            <p class="text-xs text-gray-500" id="date"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-span-2">
+                                <div class="relative w-1/3 w-full h-12 h-full px-6 py-4 mt-6 overflow-hidden bg-center bg-cover rounded-lg shadow-sm"
+                                    style="background-image: url('https://cdn.devdojo.com/images/march2021/wordsmith.jpg')">
+                                    <div class="absolute inset-0 opacity-50 bg-gradient-to-br from-gray-800 to-gray-900">
+                                    </div>
+                                    <div
+                                        class="relative z-20 flex flex-col items-center justify-center w-full h-full text-gray-100">
+                                        <h2
+                                            class="px-4 py-2 text-3xl font-bold font-black text-white border-8 border-white shadow-lg">
+                                            WORD<span class="font-light">SMITH</span></h2>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Course Card -->
+                            <div class="col-span-1">
+                                <div
+                                    class="flex flex-col items-center justify-center h-full px-6 py-4 mt-6 bg-white rounded-lg shadow-sm">
+                                    <svg class="w-8 h-8 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                                        </path>
+                                    </svg>
+                                    <p class="w-full text-sm text-center text-gray-500">Wordsmith<br> Course</p>
+                                    <a href="https://devdojo.com/wordsmith" target="_blank"
+                                        class="inline-block px-4 py-2 mt-4 text-sm font-medium text-gray-700 border border-gray-300 rounded">Learn
+                                        More</a>
+                                </div>
+                            </div>
+                            <!-- End Course Card -->
+                        </div>
+
+
+                        <!-- Middle Row of Cards -->
+                        <div class="w-full gap-x-5 lg:gap-x-6 grid grid-cols-3 flex-1">
+
+                            <div class="col-span-1">
+                                <div
+                                    class="flex items-center justify-center h-full px-6 py-4 mt-6 mr-2 bg-white rounded-lg shadow-sm">
+                                    <div>
+                                        <h2 class="w-full text-3xl font-bold text-center text-gray-900">5</h2>
+                                        <p class="w-full text-sm text-center text-gray-500">Posts</p>
+                                        <a href="/dashboard/posts/create"
+                                            class="inline-block px-4 py-2 mt-5 text-sm font-medium text-gray-700 border border-gray-300 rounded">Add
+                                            New</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-span-1">
+                                <div
+                                    class="flex items-center justify-center h-full px-6 py-4 mt-6 mr-2 bg-white rounded-lg shadow-sm">
+                                    <div>
+                                        <h2 class="w-full text-3xl font-bold text-center text-gray-900">3</h2>
+                                        <p class="w-full text-sm text-center text-gray-500">Categories</p>
+                                        <a href="/dashboard/posts/create"
+                                            class="inline-block px-4 py-2 mt-5 text-sm font-medium text-gray-700 border border-gray-300 rounded">Add
+                                            New</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-span-1">
+                                <div
+                                    class="flex items-center justify-center h-full px-6 py-4 mt-6 mr-2 bg-white rounded-lg shadow-sm">
+                                    <div>
+                                        <h2 class="w-full text-3xl font-bold text-center text-gray-900">2</h2>
+                                        <p class="w-full text-sm text-center text-gray-500">Users</p>
+                                        <a href="/dashboard/posts/create"
+                                            class="inline-block px-4 py-2 mt-5 text-sm font-medium text-gray-700 border border-gray-300 rounded">Add
+                                            New</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Last Row of Cards -->
+                        <div class="w-full flex-1">
+
+                            <div class="h-full">
+                                <div
+                                    class="flex items-center justify-center h-full px-6 py-4 mt-6 mr-2 bg-white rounded-lg shadow-sm">
+                                    <div>
+                                        <svg class="w-12 mb-5 mx-auto fill-current" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 202 120">
+                                            <defs />
+                                            <g fill-rule="evenodd">
+                                                <path
+                                                    d="M0 0l69.245 120L96 73.633 53.51 0zM64 0l69.244 120L160 73.633 117.51 0zM127 0l37.5 65L202 0z" />
+                                            </g>
+                                        </svg>
+                                        <p class="w-full text-sm text-center text-gray-500">WordSmith</p>
+                                        <a href="/"
+                                            class="inline-block px-4 py-2 mt-5 text-sm font-medium text-gray-700 border border-gray-300 rounded">Visit
+                                            My Blog</a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Main Content -->
+    </div>
+@endsection
