@@ -33,4 +33,8 @@
     if (document.getElementById('date')) {
         DisplayCurrentDate();
     }
+
+    window.addEventListener('set-url', function (event) {
+        history.pushState({}, '', event.detail.url)
+    });
 </script>

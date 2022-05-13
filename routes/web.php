@@ -63,9 +63,12 @@ Route::middleware('auth')->group(function () {
 |
 */
 
-Route::middleware('auth')->prefix('dashboard')->group(function (){
-    Route::view('/', 'dashboard.index');
-    Route::view('/posts', 'dashboard.posts');
-    Route::view('/posts/create', 'dashboard.posts-editor');
-    Route::view('/posts/edit/{id}', 'dashboard.posts-editor');
+Route::middleware('auth')
+    ->prefix('dashboard')
+    ->namespace('\App\Http\Livewire\Dashboard')
+    ->group(function (){
+        Route::view('/', 'dashboard.index');
+        Route::view('/posts', 'dashboard.posts');
+        Route::get('/posts/create', PostsEditor::class);
+        Route::get('/posts/edit/{post}', PostsEditor::class);
 });
