@@ -8,6 +8,7 @@
     <title>Wordsmith Dashboard</title>
     <script src="https://unpkg.com/htmlincludejs"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.7/tailwind.min.css">
+    @livewireStyles
 </head>
 <body class="h-full min-h-screen antialiased">
 
@@ -20,6 +21,6 @@
     </div>
     <script src="//unpkg.com/alpinejs" defer></script>
     @include('dashboard.js')
-
+    @livewireScripts
 </body>
 </html>
