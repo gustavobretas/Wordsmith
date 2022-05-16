@@ -6,10 +6,16 @@ use App\Models\Post;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Validator;
+use Livewire\WithFileUploads;
+
 
 class PostsEditor extends Component
 {
+
+    use WithFileUploads;
+
     public $post;
+    public $image;
 
     protected $rules = [
         'post.title' => 'required|min:6',
@@ -22,7 +28,8 @@ class PostsEditor extends Component
         'post.meta_title' => '',
         'post.meta_description' => '',
         'post.meta_schema' => '',
-        'post.meta_data' => ''
+        'post.meta_data' => '',
+        'image' => 'nullable|image|max:5120'
     ];
 
     public function mount(Post $post){
@@ -49,8 +56,13 @@ class PostsEditor extends Component
             $this->post->slug = Str::slug($this->post->title);
         }
 
+        if($this->image){
+            $this->post->image = $this->image->store('images');
+            $this->image = null;
+        }
+
         foreach ($this->post->toArray() as $column => $value) {
-            if(is_null($value)) {
+            if(is_null($value) && $column != 'image') {
                 unset($this->post->{$column});
             }
         }
@@ -65,6 +77,14 @@ class PostsEditor extends Component
             'type' => 'success',
             'message' => 'Successfully saved post.'
         ]);
+    }
+
+    public function removeTemporaryImage(){
+        $this->image = null;
+    }
+
+    public function removeImage(){
+        $this->post->image = null;
     }
 
     public function render()

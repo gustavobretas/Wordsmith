@@ -53,25 +53,23 @@
 
                         <div class="p-6">
 
-                            <div class="relative cursor-pointer mb-8 h-56 rounded-lg overflow-hidden">
-                                <label id="image_preview_upload"
-                                       class="top-0 left-0 w-full h-56 rounded-lg bg-white border border-gray-200 rounded-lg cursor-pointer block flex flex-col justify-center items-center hidden">
-                                    <span
-                                        class="px-3 py-2 rounded border border-gray-300 bg-white text-xs font-bold text-gray-600">Upload
-                                        Post Image</span>
+                            <div class="relative h-56 mb-8 overflow-hidden rounded-lg cursor-pointer">
+
+                                <label class="top-0 left-0 flex flex-col items-center justify-center block w-full h-56 bg-white border border-gray-200 rounded-lg cursor-pointer">
+                                    <span class="px-3 py-2 text-xs font-bold text-gray-600 bg-white border border-gray-300 rounded">Upload Post Image</span>
                                 </label>
-                                <div id="image_preview" class=" w-full h-full">
-                                    <div id="removeImage"
-                                         class="w-20 h-6 bg-red-500 text-white absolute right-0 top-0 mr-3 mt-3 rounded-full flex justify-center items-center text-xs leading-none font-bold"
-                                         onclick="hideImagePreview()">× remove
+                                @if($image || $post->image)
+                                    <div class="absolute top-0 left-0 z-10 w-full h-full">
+                                        @if($image)
+                                            <div wire:click="removeTemporaryImage" class="absolute top-0 right-0 flex items-center justify-center w-20 h-6 mt-3 mr-3 text-xs font-bold leading-none text-white bg-red-500 rounded-full">× remove</div>
+                                        @endif
+                                        @if($post->image)
+                                            <div wire:click="removeImage" class="absolute top-0 right-0 flex items-center justify-center w-20 h-6 mt-3 mr-3 text-xs font-bold leading-none text-white bg-red-500 rounded-full">× remove</div>
+                                        @endif
+                                        <img src="@if($image){{ $image->temporaryUrl() }}@elseif($post->image){{ Storage::url($post->image) }}@endif" class="object-cover w-full h-full bg-gray-200 rounded-lg">
                                     </div>
-                                    <img
-                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                        data-pixel="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                        class="w-full bg-gray-200 rounded-lg h-full" id="image">
-                                </div>
-                                <input type="file" id="image_upload"
-                                       class="w-full h-full absolute left-0 top-0 opacity-0 cursor-pointer hidden">
+                                @endif
+                                <input type="file" wire:model="image" class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer">
                             </div>
 
                             <label class="text-gray-600 text-sm font-medium mb-3 inline-block" for="slug">URL</label>
