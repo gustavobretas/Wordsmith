@@ -103,6 +103,25 @@
                                 </div>
                             </div>
 
+                            <div class="mt-6">
+                                <label class="text-gray-600 text-sm font-medium mb-3 inline-block">Status</label>
+                            </div>
+                            <div class="relative">
+                                <select wire:model="post.status" name="status" class="bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal focus:outline-none focus:shadow-outline">
+                                    <option value={{App\Models\Post::STATUS_DRAFT}} selected>Draft</option>
+                                    <option value={{App\Models\Post::STATUS_PUBLISHED}}>Published</option>
+                                </select>
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z">
+                                        </path>
+                                    </svg>
+                                </div>
+                            </div>
+
                             <div class="flex mb-3 mt-8 items-center px-3 py-1.5 rounded bg-gray-200">
                                 <input wire:model="post.featured" type="checkbox" name="featured"
                                        class="form-checkbox peer">

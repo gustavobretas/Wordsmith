@@ -84,8 +84,8 @@
                                 <div
                                     class="flex items-center justify-center h-full px-6 py-4 mt-6 mr-2 bg-white rounded-lg shadow-sm">
                                     <div>
-                                        <h2 class="w-full text-3xl font-bold text-center text-gray-900">5</h2>
-                                        <p class="w-full text-sm text-center text-gray-500">Posts</p>
+                                        <h2 class="w-full text-3xl font-bold text-center text-gray-900">{{ App\Models\Post::count() }}</h2>
+                                        <p class="w-full text-sm text-center text-gray-500">{{ \Illuminate\Support\Str::plural('Post', App\Models\Post::count()) }}</p>
                                         <a href="/dashboard/posts/create"
                                             class="inline-block px-4 py-2 mt-5 text-sm font-medium text-gray-700 border border-gray-300 rounded">Add
                                             New</a>
@@ -98,7 +98,7 @@
                                     class="flex items-center justify-center h-full px-6 py-4 mt-6 mr-2 bg-white rounded-lg shadow-sm">
                                     <div>
                                         <h2 class="w-full text-3xl font-bold text-center text-gray-900">3</h2>
-                                        <p class="w-full text-sm text-center text-gray-500">Categories</p>
+                                        <p class="w-full text-sm text-center text-gray-500">Settings</p>
                                         <a href="/dashboard/posts/create"
                                             class="inline-block px-4 py-2 mt-5 text-sm font-medium text-gray-700 border border-gray-300 rounded">Add
                                             New</a>
@@ -110,8 +110,8 @@
                                 <div
                                     class="flex items-center justify-center h-full px-6 py-4 mt-6 mr-2 bg-white rounded-lg shadow-sm">
                                     <div>
-                                        <h2 class="w-full text-3xl font-bold text-center text-gray-900">2</h2>
-                                        <p class="w-full text-sm text-center text-gray-500">Users</p>
+                                        <h2 class="w-full text-3xl font-bold text-center text-gray-900">{{ App\Models\User::count() }}</h2>
+                                        <p class="w-full text-sm text-center text-gray-500">{{ \Illuminate\Support\Str::plural('User', App\Models\User::count()) }}</p>
                                         <a href="/dashboard/posts/create"
                                             class="inline-block px-4 py-2 mt-5 text-sm font-medium text-gray-700 border border-gray-300 rounded">Add
                                             New</a>

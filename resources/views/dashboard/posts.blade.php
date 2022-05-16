@@ -28,29 +28,40 @@
                             Status</div>
                     </div>
 
+                    @foreach(App\Models\Post::all() as $post)
                     <div class="cursor-pointer bg-white hover:bg-yellow-50 flex justify-between"
-                        onclick="window.location = '/dashboard/posts/edit/1'">
+                        onclick="window.location = '/dashboard/posts/edit/{{$post->id}}'">
                         <div class="px-5 py-5 text-sm w-3/6">
                             <div class="flex flex-col">
-                                <p class="text-gray-900 whitespace-no-wrap">test</p>
-                                <code class="text-gray-600 whitespace-no-wrap block text-xs mt-1">/test</code>
+                                <p class="text-gray-900 whitespace-no-wrap">{{$post->title}}</p>
+                                <code class="text-gray-600 whitespace-no-wrap block text-xs mt-1">/{{$post->slug}}</code>
                             </div>
                         </div>
                         <div class="px-5 py-5 text-sm w-1/6">
-                            <p class="text-gray-900 whitespace-no-wrap">November 6, 2020<span
-                                    class="block text-gray-600">3:24 PM</span></p>
+                            <p class="text-gray-900 whitespace-no-wrap">{{ $post->created_at->format('M, d Y') }}
+                                <span class="block text-gray-600">{{ $post->created_at->format('g:i A') }}</span>
+                            </p>
                         </div>
                         <div class="px-5 py-5 text-sm w-1/6">
-                            <p class="text-gray-900 whitespace-no-wrap">November 6, 2020<span
-                                    class="block text-gray-600">3:24 PM</span></p>
+                            <p class="text-gray-900 whitespace-no-wrap">{{ $post->updated_at->format('M, d Y') }}
+                                <span class="block text-gray-600">{{ $post->updated_at->format('g:i A') }}</span>
+                            </p>
                         </div>
                         <div class="px-5 py-5 text-sm w-1/6">
+                            @if($post->status == App\Models\Post::STATUS_PUBLISHED)
                             <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                 <span aria-hidden="" class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
                                 <span class="relative">Published</span>
                             </span>
+                            @else
+                            <span class="relative inline-block px-3 py-1 font-semibold text-gray-900 leading-tight">
+                                <span aria-hidden="" class="absolute inset-0 bg-gray-200 opacity-50 rounded-full"></span>
+                                <span class="relative">Draft</span>
+                            </span>
+                            @endif
                         </div>
                     </div>
+                    @endforeach
 
                 </div>
             </div>

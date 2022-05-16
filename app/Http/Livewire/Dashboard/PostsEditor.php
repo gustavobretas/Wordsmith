@@ -24,6 +24,7 @@ class PostsEditor extends Component
         'post.slug' => '',
         'post.excerpt' => '',
         'post.type' => '',
+        'post.status' => '',
         'post.featured' => '',
         'post.meta_title' => '',
         'post.meta_description' => '',
