@@ -37,4 +37,10 @@
     window.addEventListener('set-url', function (event) {
         history.pushState({}, '', event.detail.url)
     });
+
+    window.notification = {
+        show: function(type, message) {
+            window.dispatchEvent(new CustomEvent('notification-show', { detail: { type: type, message: message }}));
+        }
+    }
 </script>

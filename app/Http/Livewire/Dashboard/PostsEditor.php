@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Dashboard;
 use App\Models\Post;
 use Illuminate\Support\Str;
 use Livewire\Component;
+use Validator;
 
 class PostsEditor extends Component
 {
@@ -33,7 +34,15 @@ class PostsEditor extends Component
     }
 
     public function savePost(){
-        $this->validate();
+        $validator = validator::make($this->getDataForValidation($this->rules), $this->rules);
+
+        if($validator->fails()) {
+            $this->dispatchBrowserEvent('notification-show', [
+                'type' => 'error',
+                'message' => str_replace('post.', '', $validator->errors()->first())
+            ]);
+            return;
+        }
 
         $this->post->user_id = auth()->user()->id;
         if(!isset($this->post->id)) {
@@ -50,6 +59,10 @@ class PostsEditor extends Component
 
         $this->dispatchBrowserEvent('set-url', [
             'url' => '/dashboard/posts/edit/' . $this->post->id
+        ]);
+
+            'type' => 'success',
+            'message' => 'Successfully saved post.'
         ]);
     }
 
