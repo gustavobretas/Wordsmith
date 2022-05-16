@@ -61,6 +61,7 @@ class PostsEditor extends Component
             'url' => '/dashboard/posts/edit/' . $this->post->id
         ]);
 
+        $this->dispatchBrowserEvent('notification-show', [
             'type' => 'success',
             'message' => 'Successfully saved post.'
         ]);
