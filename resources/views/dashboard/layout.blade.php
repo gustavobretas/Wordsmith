@@ -25,5 +25,15 @@
     <script src="//unpkg.com/alpinejs" defer></script>
     @include('dashboard.js')
     @livewireScripts
+
+    @if(session('notification'))
+        <script>
+            let notification_type = "{{ session('notification')['type'] }}"
+            let notification_message = "{{ session('notification')['message'] }}"
+            document.addEventListener("DOMContentLoaded", function() {
+                notification.show(notification_type, notification_message);
+            });
+        </script>
+    @endif
 </body>
 </html>

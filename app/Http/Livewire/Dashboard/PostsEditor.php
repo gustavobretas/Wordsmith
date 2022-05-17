@@ -87,7 +87,16 @@ class PostsEditor extends Component
     public function updateBody($value){
         $this->post->body = $value;
     }
-    
+
+    public function delete(){
+        $this->post->delete();
+        session()->flash('notification', [
+            'type' => 'success',
+            'message' => 'Successfully Deleted Post'
+        ]);
+        return redirect('/dashboard/posts');
+    }
+
     public function removeTemporaryImage(){
         $this->image = null;
     }

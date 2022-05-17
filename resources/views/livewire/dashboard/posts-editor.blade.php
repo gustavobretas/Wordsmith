@@ -145,7 +145,7 @@
 
                         </div>
                     </div>
-                    <div class="text-right p-5 flex justify-end" id="delete-post">
+                    <div class="text-right p-5 flex justify-end" wire:click="delete" id="delete-post">
                         <div
                             class="text-red-600 underline text-sm cursor-pointer inline-block flex justify-center items-center"
                             data-slug="test">
