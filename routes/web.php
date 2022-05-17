@@ -8,6 +8,7 @@ use App\Http\Livewire\Auth\Passwords\Email;
 use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
+use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,4 +54,21 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', LogoutController::class)
         ->name('logout');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::middleware('auth')
+    ->prefix('dashboard')
+    ->namespace('\App\Http\Livewire\Dashboard')
+    ->group(function (){
+        Route::view('/', 'dashboard.index');
+        Route::view('/posts', 'dashboard.posts');
+        Route::get('/posts/create', PostsEditor::class);
+        Route::get('/posts/edit/{post}', PostsEditor::class);
 });
