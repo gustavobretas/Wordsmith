@@ -8,6 +8,7 @@
     <title>Wordsmith Dashboard</title>
     <script src="https://unpkg.com/htmlincludejs"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.7/tailwind.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css"/>
     <style>[x-cloak]{ display:none }</style>
     @livewireStyles
 </head>

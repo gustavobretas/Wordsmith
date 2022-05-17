@@ -6,7 +6,7 @@
                 <input wire:model="post.title" name="title" placeholder="Post Title"
                        class="bg-white border border-gray-300 rounded-lg py-2 block w-full appearance-none leading-normal focus:outline-none focus:shadow-outline text-4xl font-bold text-black mb-4 w-full border-none overflow-visible"
                        id="title" value="">
-                <textarea wire:model="post.body" placeholder="body" class="w-full"></textarea>
+                <livewire:markdown-x :content="$post->body ?? ''"></livewire:markdown-x>
             </div>
 
             <div class="fixed right-0 top-0 flex bg-white border-l border-b border-gray-300 pb-2 pl-5 rounded-bl-lg">

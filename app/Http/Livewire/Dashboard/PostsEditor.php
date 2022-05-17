@@ -33,6 +33,10 @@ class PostsEditor extends Component
         'image' => 'nullable|image|max:5120'
     ];
 
+    protected $listeners = [
+        'markdown-x:update' => 'updateBody',
+    ];
+
     public function mount(Post $post){
         if(isset($post)){
             $this->post = $post;
@@ -80,6 +84,10 @@ class PostsEditor extends Component
         ]);
     }
 
+    public function updateBody($value){
+        $this->post->body = $value;
+    }
+    
     public function removeTemporaryImage(){
         $this->image = null;
     }
