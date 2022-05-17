@@ -22,8 +22,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('home');
-
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)
         ->name('login');
@@ -72,3 +70,14 @@ Route::middleware('auth')
         Route::get('/posts/create', PostsEditor::class);
         Route::get('/posts/edit/{post}', PostsEditor::class);
 });
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::view('/', 'home')->name('home');
+Route::view('post-name', 'post')->name('post');
+

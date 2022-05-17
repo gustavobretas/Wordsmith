@@ -18,9 +18,13 @@
 
         @include('dashboard.sidebar')
 
-        @yield('content')
+        <div class="w-full ml-64 bg-gray-100">
 
+            @yield('content')
+
+        </div>
     </div>
+
     @include('dashboard.notifications')
     <script src="//unpkg.com/alpinejs" defer></script>
     @include('dashboard.js')
