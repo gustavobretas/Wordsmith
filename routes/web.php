@@ -57,7 +57,7 @@ Route::middleware('auth')->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Dashboard Routes
 |--------------------------------------------------------------------------
 |
 */
@@ -79,6 +79,6 @@ Route::middleware('auth')
 |
 */
 
-Route::view('/', 'home')->name('home');
+Route::get('/', [BlogController::class, 'home'])->name('home');
 Route::view('post-name', 'post')->name('post');
 

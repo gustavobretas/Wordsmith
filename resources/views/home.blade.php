@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    @if($featured ?? false)
     <!-- Top Hero Post -->
     <section class="bg-gradient-to-b from-white to-gray-50">
 
-        <div class="mx-auto lg:max-w-7xl sm:max-w-xl md:max-w-full py-10 sm:py-16 px-10">
+        <div class="mx-auto lg:max-w-7xl sm:max-w-xl md:max-w-full pt-10 sm:pt-16 px-10">
             <div class="bg-white shadow-sm border border-gray-100 rounded-lg cursor-pointer overflow-hidden w-full">
                 <div class="flex flex-col-reverse items-center md:flex-row">
                     <div class="flex flex-col items-start justify-center w-full h-full py-6 md:w-7/12">
@@ -13,109 +14,50 @@
                                 <svg class="w-3.5 h-3.5 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
                                 <span>Featured</span>
                             </div>
-                            <h1 class="text-4xl font-bold leading-none lg:text-5xl xl:text-6xl"><a href="/a-workspace-that-sparks-creativity">A Workspace that Sparks Creativity</a></h1>
-                            <p class="pt-5 text-sm font-medium">Featured Post · <span class="mx-1">April 23rd, 2021</span> · <a href="#_" class="mr-1 underline">Read More</a></p>
+                            <h1 class="text-4xl font-bold leading-none lg:text-5xl xl:text-6xl">
+                                <a href="{{ $featured->slug }}">{{ $featured->title }}</a>
+                            </h1>
+                            <p class="pt-5 text-sm font-medium">Featured Post · 
+                                <span class="mx-1">{{ $featured->created_at->format('F jS, Y') }}</span> · 
+                                <a href="{{ $featured->slug }}" class="mr-1 underline">Read More</a>
+                            </p>
                         </div>
                     </div>
                     <div class="w-full md:w-5/12">
-                        <a href="/a-workspace-that-sparks-creativity" class="block">
-                            <img class="object-cover w-full h-full max-h-64 sm:max-h-96" src="https://cdn.devdojo.com/images/september2021/desksetup.jpeg">
+                        <a href="{{ $featured->slug }}" class="block">
+                            <img class="object-cover w-full h-full max-h-64 sm:max-h-96" src="{{ $featured->image }}" alt="{{ $featured->title }}">
                         </a>
                     </div>
 
                 </div>
             </div>
         </div>
-
     </section>
-
+    @endif
 
     <!-- Grid Posts -->
-    <section class="bg-gray-50 pb-16">
+    <section class="bg-gray-50 pb-16 sm:pt-16 pt-10">
         <div class="px-10 pb-10 mx-auto lg:max-w-7xl sm:max-w-xl md:max-w-full sm:pb-16">
 
             <div class="grid gap-x-8 gap-y-12 sm:gap-x-12 sm:gap-y-16 md:grid-cols-2 lg:grid-cols-3">
+                @foreach($posts as $post)
                 <div class="relative bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm">
-                    <a href="#_" class="block overflow-hidden group">
-                        <img src="https://cdn.devdojo.com/images/september2021/better-developer.jpeg" class="object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-110" alt="">
+                    <a href="{{ $post->slug }}" class="block overflow-hidden group">
+                        <img src="{{ $post->image }}" class="object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-110" alt="{{ $post->title }}">
                     </a>
                     <div class="relative p-7">
-                        <p class="uppercase font-semibold text-xs mb-2.5 text-purple-600">Sept. 5th 2021</p>
-                        <a href="#" class="block mb-3 hover:underline">
-                            <h2 class="text-xl font-bold leading-none text-black transition-colors duration-200">Becoming a Better Developer</h2>
+                        <p class="uppercase font-semibold text-xs mb-2.5 text-purple-600">{{ $post->created_at->format('F jS, Y') }}</p>
+                        <a href="{{ $post->slug }}" class="block mb-3 hover:underline">
+                            <h2 class="text-xl font-bold leading-none text-black transition-colors duration-200">{{ $post->title }}</h2>
                         </a>
-                        <p class="mb-4 text-gray-700">Learn about these strategies and tips you can take advantage of to become a better developer.</p>
-                        <a href="#_" class="font-medium underline">Read More</a>
+                        @if($post->excerpt)
+                            <p class="mb-4 text-gray-700">{{ $post->excerpt }}</p>
+                        @endif
+                        <a href="{{ $post->slug }}" class="font-medium underline">Read More</a>
                     </div>
                 </div>
-                <div class="relative bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm">
-                    <a href="#_" class="block overflow-hidden group">
-                        <img src="https://cdn.devdojo.com/images/september2021/travel-destinations.jpeg" class="object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-110" alt="">
-                    </a>
-                    <div class="relative p-7">
-                        <p class="uppercase font-semibold text-xs mb-2.5 text-purple-600">Sept. 4th 2021</p>
-                        <a href="#" class="block mb-3 hover:underline">
-                            <h2 class="text-xl font-bold leading-none text-black transition-colors duration-200">Ultimate Travel Destinations</h2>
-                        </a>
-                        <p class="mb-4 text-gray-700">Check out this list of the best travel destinations that you'll definitely want to add to your bucket list.</p>
-                        <a href="#_" class="font-medium underline">Read More</a>
-                    </div>
-                </div>
-                <div class="relative bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm">
-                    <a href="#_" class="block overflow-hidden group">
-                        <img src="https://cdn.devdojo.com/images/september2021/inspire-greatness.jpeg" class="object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-110" alt="">
-                    </a>
-                    <div class="relative p-7">
-                        <p class="uppercase font-semibold text-xs mb-2.5 text-purple-600">Sept. 1st 2021</p>
-                        <a href="#" class="block mb-3 hover:underline">
-                            <h2 class="text-xl font-bold leading-none text-black transition-colors duration-200">Inspire Greatness</h2>
-                        </a>
-                        <p class="mb-4 text-gray-700">Learn how inspiration and greatness grow exponentially as you continue to pursue the best version of yourself.</p>
-                        <a href="#_" class="font-medium underline">Read More</a>
-                    </div>
-                </div>
-
-                <div class="relative bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm">
-                    <a href="#_" class="block overflow-hidden group">
-                        <img src="https://cdn.devdojo.com/images/september2021/better-writer.jpeg" class="object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-110" alt="">
-                    </a>
-                    <div class="relative p-7">
-                        <p class="uppercase font-semibold text-xs mb-2.5 text-purple-600">Aug. 28th 2021</p>
-                        <a href="#" class="block mb-3 hover:underline">
-                            <h2 class="text-xl font-bold leading-none text-black transition-colors duration-200">Becoming a Better Writer</h2>
-                        </a>
-                        <p class="mb-4 text-gray-700">Learn about these strategies and tips you can take advantage of to become a better developer.</p>
-                        <a href="#_" class="font-medium underline">Read More</a>
-                    </div>
-                </div>
-                <div class="relative bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm">
-                    <a href="#_" class="block overflow-hidden group">
-                        <img src="https://cdn.devdojo.com/images/september2021/productive.jpeg" class="object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-110" alt="">
-                    </a>
-                    <div class="relative p-7">
-                        <p class="uppercase font-semibold text-xs mb-2.5 text-purple-600">Aug. 23rd 2021</p>
-                        <a href="#" class="block mb-3 hover:underline">
-                            <h2 class="text-xl font-bold leading-none text-black transition-colors duration-200">Best Tips for Productivity</h2>
-                        </a>
-                        <p class="mb-4 text-gray-700">Check out this list of the best travel destinations that you'll definitely want to add to your bucket list.</p>
-                        <a href="#_" class="font-medium underline">Read More</a>
-                    </div>
-                </div>
-                <div class="relative bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm">
-                    <a href="#_" class="block overflow-hidden group">
-                        <img src="https://cdn.devdojo.com/images/september2021/build-app.jpeg" class="object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-110" alt="">
-                    </a>
-                    <div class="relative p-7">
-                        <p class="uppercase font-semibold text-xs mb-2.5 text-purple-600">Aug. 20th 2021</p>
-                        <a href="#" class="block mb-3 hover:underline">
-                            <h2 class="text-xl font-bold leading-none text-black transition-colors duration-200">Building an App that Sells</h2>
-                        </a>
-                        <p class="mb-4 text-gray-700">Learn how inspiration and greatness grow exponentially as you continue to pursue the best version of yourself.</p>
-                        <a href="#_" class="font-medium underline">Read More</a>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
-    </section>
+    </section> 
 @endsection
