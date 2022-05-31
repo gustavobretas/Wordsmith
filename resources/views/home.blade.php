@@ -17,15 +17,15 @@
                             <h1 class="text-4xl font-bold leading-none lg:text-5xl xl:text-6xl">
                                 <a href="{{ $featured->slug }}">{{ $featured->title }}</a>
                             </h1>
-                            <p class="pt-5 text-sm font-medium">Featured Post · 
-                                <span class="mx-1">{{ $featured->created_at->format('F jS, Y') }}</span> · 
+                            <p class="pt-5 text-sm font-medium">Featured Post ·
+                                <span class="mx-1">{{ $featured->created_at->format('F jS, Y') }}</span> ·
                                 <a href="{{ $featured->slug }}" class="mr-1 underline">Read More</a>
                             </p>
                         </div>
                     </div>
                     <div class="w-full md:w-5/12">
                         <a href="{{ $featured->slug }}" class="block">
-                            <img class="object-cover w-full h-full max-h-64 sm:max-h-96" src="{{ $featured->image }}" alt="{{ $featured->title }}">
+                            <img class="object-cover w-full h-full max-h-64 sm:max-h-96" src="{{ Storage::url($featured->image) }}" alt="{{ $featured->title }}">
                         </a>
                     </div>
 
@@ -43,7 +43,7 @@
                 @foreach($posts as $post)
                 <div class="relative bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm">
                     <a href="{{ $post->slug }}" class="block overflow-hidden group">
-                        <img src="{{ $post->image }}" class="object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-110" alt="{{ $post->title }}">
+                        <img src="{{ Storage::url($post->image) }}" class="object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-110" alt="{{ $post->title }}">
                     </a>
                     <div class="relative p-7">
                         <p class="uppercase font-semibold text-xs mb-2.5 text-purple-600">{{ $post->created_at->format('F jS, Y') }}</p>
@@ -59,5 +59,5 @@
                 @endforeach
             </div>
         </div>
-    </section> 
+    </section>
 @endsection
