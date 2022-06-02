@@ -3,7 +3,9 @@
         @foreach($posts as $post)
         <div class="relative bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm">
             <a href="{{ $post->slug }}" class="block overflow-hidden group">
+                @if($post->image)
                 <img src="{{ Storage::url($post->image) }}" class="object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-110" alt="{{ $post->title }}">
+                @endif
             </a>
             <div class="relative p-7">
                 <p class="uppercase font-semibold text-xs mb-2.5 text-purple-600">{{ $post->created_at->format('F jS, Y') }}</p>

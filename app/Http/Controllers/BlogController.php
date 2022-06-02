@@ -11,4 +11,8 @@ class BlogController extends Controller
         $featured = Post::where('featured', 1)->where('type', 'post')->first();
         return view('home', compact('featured'));
     }
+
+    public function post(Post $post) {
+        return view('post', compact('post'));
+    }
 }

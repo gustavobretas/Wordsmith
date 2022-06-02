@@ -80,5 +80,5 @@ Route::middleware('auth')
 */
 
 Route::get('/', [BlogController::class, 'home'])->name('home');
-Route::view('post-name', 'post')->name('post');
+Route::get('/{post:slug}', [BlogController::class, 'post'])->name('post');
 

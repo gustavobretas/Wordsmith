@@ -11,6 +11,8 @@ class Post extends Model
 
     const STATUS_DRAFT = 'DRAFT';
     const STATUS_PUBLISHED = 'PUBLISHED';
+    const TYPE_POST = 'post';
+    const TYPE_PAGE = 'page';
 
     public function scopeExcludedFeature($query){
         $featured = Post::where('featured', 1)->where('type', 'post')->first();

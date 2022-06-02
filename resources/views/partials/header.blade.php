@@ -18,15 +18,15 @@
 
             <nav class="flex flex-wrap  md:w-2/5 md:ml-auto items-center md:my-0 my-5 order-2 md:order-1 space-x-4 text-xs font-semibold tracking-wide uppercase sm:space-x-6">
                 <a href="/" class="text-gray-500 hover:text-gray-500">Home</a>
-                <a href="#_" class="text-gray-400 hover:text-gray-500">About</a>
-                <a href="#_" class="text-gray-400 hover:text-gray-500">Projects</a>
+                <a href="about" class="text-gray-400 hover:text-gray-500">About</a>
+                <a href="projects" class="text-gray-400 hover:text-gray-500">Projects</a>
             </nav>
             <a href="/" class="flex items-center text-gray-700 font-medium order-1 md:order-2 text-gray-900 md:w-1/5 md:items-center md:justify-center">
                 <svg class="w-auto h-4 mr-2  fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 202 120"><defs></defs><g fill-rule="evenodd"><path d="M0 0l69.245 120L96 73.633 53.51 0zM64 0l69.244 120L160 73.633 117.51 0zM127 0l37.5 65L202 0z"></path></g></svg>
                 <span class="uppercase text-xs font-bold">Wordsmith</span>
             </a>
             <div class="inline-flex items-center space-x-6 md:w-2/5 order-3 md:order-3 md:justify-end">
-                <a href="#" class="inline-flex tracking-wide uppercase text-xs items-center justify-center px-5 py-2.5 font-semibold text-gray-100 hover:text-white bg-gray-800 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">Contact</a>
+                <a href="contact" class="inline-flex tracking-wide uppercase text-xs items-center justify-center px-5 py-2.5 font-semibold text-gray-100 hover:text-white bg-gray-800 border border-transparent rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">Contact</a>
             </div>
         </div>
     </div>
