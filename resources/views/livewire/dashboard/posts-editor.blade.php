@@ -1,5 +1,5 @@
-   <div class="w-full ml-64 bg-gray-100" x-data="{ settings: false, settingsMeta: false }">
-        <div class="relative flex justify-start">
+   <section x-data="{ settings: false, settingsMeta: false }">
+        <div class="relative flex justify-start pl-1 sm:pl-1">
             <div class="max-w-4xl min-h-screen bg-white flex-1 px-10 pl-12 py-8 border-r border-l border-gray-200"
                  id="post">
                 <input wire:model="post.title" name="title" placeholder="Post Title"
@@ -222,4 +222,4 @@
                 </div>
             </div>
         </div>
-   </div>
+   </section>

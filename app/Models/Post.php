@@ -14,9 +14,18 @@ class Post extends Model
     const TYPE_POST = 'post';
     const TYPE_PAGE = 'page';
 
-    public function scopeExcludedFeature($query){
-        $featured = Post::where('featured', 1)->where('type', 'post')->first();
+    public function scopeExcludedFeatured($query){
+        $featured = Post::where('featured', 1)
+            ->firstFeatured()
+            ->first();
         $query->where('id', '!=', ($featured->id) ?? 0);
+    }
+
+    public function scopeFirstFeatured($query){
+        return $query->where('featured', 1)
+        ->typePost()
+        ->published()
+        ->orderBy('created_at', 'DESC');
     }
 
     public function scopeTypePost($query){
@@ -29,9 +38,9 @@ class Post extends Model
 
     public function scopeList($query) {
         return $query->orderBy('created_at', 'DESC')
-            ->excludedFeature()
+            ->excludedFeatured()
             ->typePost()
             ->published();
     }
-    
+
 }

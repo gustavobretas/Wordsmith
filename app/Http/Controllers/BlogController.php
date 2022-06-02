@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     public function home() {
-        $featured = Post::where('featured', 1)->where('type', 'post')->first();
+        $featured = Post::firstFeatured()->first();
         return view('home', compact('featured'));
     }
 
