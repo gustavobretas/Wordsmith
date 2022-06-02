@@ -9,6 +9,7 @@ use App\Http\Livewire\Auth\Passwords\Email;
 use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
+use App\Http\Livewire\Dashboard\Settings;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
@@ -70,6 +71,7 @@ Route::middleware('auth')
         Route::view('/posts', 'dashboard.posts');
         Route::get('/posts/create', PostsEditor::class);
         Route::get('/posts/edit/{post}', PostsEditor::class);
+        Route::get('/settings', Settings::class);
 });
 
 /*
