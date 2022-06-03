@@ -1,8 +1,6 @@
 @extends('dashboard.layout')
 
 @section('content')
-    <div class="w-full ml-64 bg-gray-100">
-
         <!-- Main Content -->
         <div class="px-8 py-5 relative">
             <div class="max-w-4xl">
@@ -67,6 +65,4 @@
             </div>
         </div>
         <!-- End Main Content -->
-
-    </div>
 @endsection

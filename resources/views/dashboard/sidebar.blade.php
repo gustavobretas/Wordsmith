@@ -2,12 +2,14 @@
 <div class="fixed left-0 flex flex-col items-start justify-between w-64 h-full max-h-screen p-5 bg-white">
 
     <!-- Logo -->
-    <svg class="w-auto h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 202 120">
-        <defs />
-        <g fill-rule="evenodd">
-            <path d="M0 0l69.245 120L96 73.633 53.51 0zM64 0l69.244 120L160 73.633 117.51 0zM127 0l37.5 65L202 0z" />
-        </g>
-    </svg>
+    <a href="/dashboard">
+        <svg class="w-auto h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 202 120">
+            <defs />
+            <g fill-rule="evenodd">
+                <path d="M0 0l69.245 120L96 73.633 53.51 0zM64 0l69.244 120L160 73.633 117.51 0zM127 0l37.5 65L202 0z" />
+            </g>
+        </svg>
+    </a>
 
     <nav class="-mt-10 text-sm text-gray-800">
         <a href="/dashboard"

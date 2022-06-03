@@ -1,6 +1,5 @@
-<div>
-    <div class="w-full ml-64 bg-gray-100" x-data="{ settings: false, settingsMeta: false }">
-        <div class="relative flex justify-start">
+   <section x-data="{ settings: false, settingsMeta: false }">
+        <div class="relative flex justify-start pl-1 sm:pl-1">
             <div class="max-w-4xl min-h-screen bg-white flex-1 px-10 pl-12 py-8 border-r border-l border-gray-200"
                  id="post">
                 <input wire:model="post.title" name="title" placeholder="Post Title"
@@ -66,7 +65,7 @@
                                         @if($post->image)
                                             <div wire:click="removeImage" class="absolute top-0 right-0 flex items-center justify-center w-20 h-6 mt-3 mr-3 text-xs font-bold leading-none text-white bg-red-500 rounded-full">× remove</div>
                                         @endif
-                                        <img src="@if($image){{ $image->temporaryUrl() }}@elseif($post->image){{ Storage::url($post->image) }}@endif" class="object-cover w-full h-full bg-gray-200 rounded-lg">
+                                        <img src="@if($image){{ $image->temporaryUrl() }}@elseif($post->image){{ Storage::url($post->image) }}@endif" class="object-cover w-full h-full bg-gray-200 rounded-lg object-cover">
                                     </div>
                                 @endif
                                 <input type="file" wire:model="image" class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer">
@@ -223,5 +222,4 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+   </section>
