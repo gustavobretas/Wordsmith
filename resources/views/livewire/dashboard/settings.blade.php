@@ -1,4 +1,4 @@
-<!-- Main Content -->
+{{-- Main Content --}}
 <div class="px-8 py-5 relative">
     <div class="max-w-4xl">
         <div class="flex justify-between items-start">

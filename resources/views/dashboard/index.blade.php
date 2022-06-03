@@ -95,9 +95,9 @@
                                 <div
                                     class="flex items-center justify-center h-full px-6 py-4 mt-6 mr-2 bg-white rounded-lg shadow-sm">
                                     <div>
-                                        <h2 class="w-full text-3xl font-bold text-center text-gray-900">3</h2>
+                                        <h2 class="w-full text-3xl font-bold text-center text-gray-900">{{ App\Models\Setting::count() }}</h2>
                                         <p class="w-full text-sm text-center text-gray-500">Settings</p>
-                                        <a href="/dashboard/posts/create"
+                                        <a href="/dashboard/settings"
                                             class="inline-block px-4 py-2 mt-5 text-sm font-medium text-gray-700 border border-gray-300 rounded">Add
                                             New</a>
                                     </div>
@@ -110,7 +110,7 @@
                                     <div>
                                         <h2 class="w-full text-3xl font-bold text-center text-gray-900">{{ App\Models\User::count() }}</h2>
                                         <p class="w-full text-sm text-center text-gray-500">{{ \Illuminate\Support\Str::plural('User', App\Models\User::count()) }}</p>
-                                        <a href="/dashboard/posts/create"
+                                        <a href="/dashboard/users"
                                             class="inline-block px-4 py-2 mt-5 text-sm font-medium text-gray-700 border border-gray-300 rounded">Add
                                             New</a>
                                     </div>

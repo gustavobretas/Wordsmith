@@ -1,15 +1,17 @@
-<section class="w-full">
-    <a href="#_" class="w-full h-10 bg-gray-900 block">
-        <span class="px-10 mx-auto h-full flex justify-center block lg:max-w-7xl">
-            <span class="inline-flex h-full w-auto items-center relative space-x-4 justify-center sm:max-w-xl md:max-w-full">
-                <span class="text-sm font-medium text-white">Latest Update: New Course Released 🎉</span>
-                <span class="text-xs underline font-medium text-gray-200 uppercase sm:block hidden absolute right-0 transform translate-x-full">
-                    <span class="ml-2">learn more</span>
+@if(settings('top-bar-link'))
+    <section class="w-full">
+        <a href="{{ settings('top-bar-link') }}" class="w-full h-10 bg-gray-900 block">
+            <span class="px-10 mx-auto h-full flex justify-center block lg:max-w-7xl">
+                <span class="inline-flex h-full w-auto items-center relative space-x-4 justify-center sm:max-w-xl md:max-w-full">
+                    <span class="text-sm font-medium text-white">Latest Update: New Course Released 🎉</span>
+                    <span class="text-xs underline font-medium text-gray-200 uppercase sm:block hidden absolute right-0 transform translate-x-full">
+                        <span class="ml-2">learn more</span>
+                    </span>
                 </span>
             </span>
-        </span>
-    </a>
-</section>
+        </a>
+    </section>
+@endif
 
 <!-- Header Nav -->
 <section class="w-full text-gray-700 bg-white border-b border-gray-100">
